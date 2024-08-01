@@ -5,11 +5,13 @@ class MoviesLibrary:
             self.data[genre] = []
 
     def add_movie(self, genre, title):
-        self.data[genre].append(title)
+        if genre in self.data:
+            self.data[genre].append(title)
+        else:
+            print(f"Genre '{genre}' not found in library.")
 
     def recommend(self, genre):
-        return self.data[genre]
-
+        return self.data.get(genre, [])
 
 if __name__ == '__main__':
     library = MoviesLibrary(['Ужасы', 'Комедия', 'Романтика'])
